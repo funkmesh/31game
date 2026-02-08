@@ -1,6 +1,6 @@
 import { Deck } from './deck.js';
 import { Player } from './player.js';
-import { isInstantWin } from './scorer.js';
+import { isInstantWin, isAllSameSuit } from './scorer.js';
 import { decideAction, chooseDiscard } from './ai.js';
 import { AI_NAMES, DIFFICULTY } from './constants.js';
 
@@ -153,6 +153,12 @@ export class GameEngine {
   knock() {
     if (this.phase !== 'playerTurn' || this._animating) return;
     if (this.knocker) return; // someone already knocked
+    if (!isAllSameSuit(this.currentPlayer.hand)) {
+      if (this.currentPlayer.isHuman) {
+        this._emitMessage('You can only knock if all 3 cards are the same suit!');
+      }
+      return;
+    }
 
     this.knocker = this.currentPlayer;
     this.currentPlayer.knocked = true;

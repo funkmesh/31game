@@ -20,10 +20,48 @@
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--table-dark);
   color: #fff;
   min-height: 100vh;
   overflow-x: hidden;
+
+  /* CSS wood plank tile background */
+  background-color: #5c3a1e;
+  background-image:
+    /* Plank horizontal seams */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 119px,
+      rgba(0,0,0,0.3) 119px,
+      rgba(0,0,0,0.3) 121px
+    ),
+    /* Vertical staggered seams (offset every other row) */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 199px,
+      rgba(0,0,0,0.25) 199px,
+      rgba(0,0,0,0.25) 201px
+    ),
+    /* Wood grain streaks */
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0.03) 8px,
+      rgba(0,0,0,0) 12px,
+      rgba(0,0,0,0.04) 24px,
+      rgba(0,0,0,0) 30px,
+      rgba(0,0,0,0.02) 45px,
+      rgba(0,0,0,0) 50px
+    ),
+    /* Warm tone variation across planks */
+    repeating-linear-gradient(
+      0deg,
+      #6b4226 0px,
+      #5c3a1e 40px,
+      #7a4f30 80px,
+      #5c3a1e 120px
+    );
 }
 
 /* ===== HEADER ===== */
@@ -33,8 +71,8 @@ body {
   justify-content: center;
   gap: 20px;
   padding: 8px 20px;
-  background: rgba(0,0,0,0.3);
-  border-bottom: 2px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.5);
+  border-bottom: 2px solid rgba(0,0,0,0.4);
 }
 
 .header h1 {
@@ -78,7 +116,9 @@ body {
   font-size: 14px;
   font-weight: 600;
   min-height: 32px;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.25);
+  border-radius: 8px;
+  margin: 0 8px;
   transition: all var(--transition-speed);
 }
 
@@ -139,9 +179,16 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px;
-  min-height: calc(100vh - 80px);
+  padding: 16px 24px;
+  margin: 12px;
+  border-radius: 16px;
+  min-height: calc(100vh - 110px);
   background: radial-gradient(ellipse at center, var(--table-green) 0%, var(--table-dark) 100%);
+  box-shadow:
+    inset 0 0 60px rgba(0,0,0,0.3),
+    0 4px 20px rgba(0,0,0,0.5),
+    0 0 0 4px #3a2210;
+  border: 2px solid rgba(255,255,255,0.05);
   position: relative;
 }
 
@@ -520,6 +567,8 @@ body {
   justify-content: center;
   z-index: 100;
   backdrop-filter: blur(4px);
+  overflow-y: auto;
+  padding: 20px 0;
 }
 
 .overlay.hidden {
@@ -590,6 +639,60 @@ body {
   background: var(--gold);
   color: #000;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+.btn-how-to-play {
+  margin-top: 12px;
+  display: block;
+  width: 100%;
+}
+
+/* ===== HOW TO PLAY ===== */
+.how-to-play {
+  margin-top: 16px;
+  padding: 16px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  text-align: left;
+  animation: fadeIn 0.3s ease;
+}
+
+.how-to-play.hidden {
+  display: none;
+}
+
+.how-to-play h3 {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.how-to-play ul {
+  list-style: none;
+  padding: 0;
+}
+
+.how-to-play li {
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.how-to-play li:last-child {
+  border-bottom: none;
+}
+
+/* ===== HUMAN SCORE DISPLAY ===== */
+.human-score {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 1px;
+  min-height: 22px;
 }
 
 /* ===== ROUND RESULTS ===== */

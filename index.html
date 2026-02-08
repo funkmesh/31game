@@ -52,6 +52,7 @@
         <button id="knock-btn" class="btn btn-knock" disabled>Knock</button>
       </div>
       <div id="human-hand" class="human-hand"></div>
+      <div id="human-score" class="human-score"></div>
     </div>
   </div>
 
@@ -80,6 +81,20 @@
       </div>
 
       <button id="start-btn" class="btn btn-primary">Start Game</button>
+      <button id="how-to-play-btn" class="btn btn-secondary btn-how-to-play">How to Play</button>
+
+      <!-- How to Play panel (hidden by default) -->
+      <div id="how-to-play" class="how-to-play hidden">
+        <h3>How to Play</h3>
+        <ul>
+          <li><strong>Goal:</strong> Get the highest hand value in a <em>single suit</em>.</li>
+          <li><strong>Card values:</strong> Ace = 11, Face cards (J/Q/K) = 10, Number cards = face value.</li>
+          <li><strong>Your turn:</strong> Draw from the stock pile (face-down) or discard pile (face-up), then discard one card.</li>
+          <li><strong>Knock:</strong> Instead of drawing, knock to signal the final round. Everyone else gets one more turn.</li>
+          <li><strong>Instant win:</strong> Ace + Face card + 10, all same suit = instant win! Everyone else loses a life.</li>
+          <li><strong>Scoring:</strong> Lowest score each round loses a life. 3 lives per player. Last one standing wins!</li>
+        </ul>
+      </div>
     </div>
   </div>
 

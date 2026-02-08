@@ -1,4 +1,4 @@
-import { evaluateHand, isInstantWin } from './scorer.js';
+import { evaluateHand, isInstantWin, isAllSameSuit } from './scorer.js';
 import { DIFFICULTY } from './constants.js';
 
 const KNOCK_THRESHOLDS = {
@@ -23,8 +23,8 @@ export function decideAction(player, discardTopCard, gameState) {
     ? Math.max(knockThreshold - 3, 22)
     : knockThreshold;
 
-  // Consider knocking
-  if (!gameState.knocker && gameState.turnsPlayed >= 2 && currentScore >= effectiveKnockThreshold) {
+  // Consider knocking (must have all same suit)
+  if (!gameState.knocker && gameState.turnsPlayed >= 2 && currentScore >= effectiveKnockThreshold && isAllSameSuit(player.hand)) {
     return { action: 'knock' };
   }
 

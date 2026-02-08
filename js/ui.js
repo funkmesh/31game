@@ -1,4 +1,5 @@
 import { SUIT_SYMBOLS, SUIT_COLORS, STARTING_LIVES } from './constants.js';
+import { isAllSameSuit } from './scorer.js';
 
 export class UIManager {
   constructor() {
@@ -26,6 +27,7 @@ export class UIManager {
       gameoverWinner: document.getElementById('gameover-winner'),
       playAgainBtn: document.getElementById('play-again-btn'),
       flyingCard: document.getElementById('flying-card'),
+      humanScore: document.getElementById('human-score'),
     };
 
     // Stable DOM references for each opponent (keyed by player name)
@@ -196,6 +198,14 @@ export class UIManager {
         });
       }
       this.elements.humanHand.appendChild(cardEl);
+    }
+
+    // Update score display
+    if (player.hand.length > 0 && this.engine.phase !== 'setup') {
+      const { score, suit } = player.getHandScore();
+      this.elements.humanScore.textContent = `Score: ${score}`;
+    } else {
+      this.elements.humanScore.textContent = '';
     }
   }
 
@@ -380,7 +390,8 @@ export class UIManager {
     const canKnock = this.engine.phase === 'playerTurn' &&
       this.engine.currentPlayer === human &&
       !this.engine.knocker &&
-      !this.engine._animating;
+      !this.engine._animating &&
+      isAllSameSuit(human.hand);
 
     this.elements.knockBtn.disabled = !canKnock;
   }

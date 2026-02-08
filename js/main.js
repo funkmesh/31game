@@ -46,6 +46,12 @@ function initSetup() {
 
   // Start button
   document.getElementById('start-btn').addEventListener('click', startGame);
+
+  // How to Play toggle
+  document.getElementById('how-to-play-btn').addEventListener('click', () => {
+    const panel = document.getElementById('how-to-play');
+    panel.classList.toggle('hidden');
+  });
 }
 
 function startGame() {

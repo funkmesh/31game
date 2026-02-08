@@ -18,6 +18,12 @@ export function evaluateHand(cards) {
   return { score: bestScore, suit: bestSuit };
 }
 
+export function isAllSameSuit(cards) {
+  if (cards.length === 0) return false;
+  const suit = cards[0].suit;
+  return cards.every(c => c.suit === suit);
+}
+
 export function isInstantWin(cards) {
   // Check all 3-card combinations (supports 3 or 4 card hands)
   const combos = cards.length === 3
