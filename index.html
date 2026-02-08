@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>31 - Card Game</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>31</h1>
+    <span id="round-info" class="round-info"></span>
+    <button id="new-game-btn" class="btn btn-restart hidden">New Game</button>
+  </div>
+
+  <!-- MESSAGE BAR -->
+  <div id="message-bar" class="message-bar">Choose your settings and press Start!</div>
+
+  <!-- KNOCK BANNER -->
+  <div id="knock-banner" class="knock-banner hidden"></div>
+
+  <!-- GAME TABLE -->
+  <div id="game-table" class="game-table hidden">
+
+    <!-- Flying card animation layer -->
+    <div id="flying-card" class="flying-card hidden"></div>
+
+    <!-- Opponents -->
+    <div id="opponents-area" class="opponents-area"></div>
+
+    <!-- Center: Stock + Discard -->
+    <div class="center-table">
+      <div class="pile stock-pile">
+        <div id="stock-pile"></div>
+        <span class="pile-label">Stock</span>
+      </div>
+      <div class="pile">
+        <div id="discard-pile"></div>
+        <span class="pile-label">Discard</span>
+      </div>
+    </div>
+
+    <!-- Human Player -->
+    <div id="human-area" class="human-area">
+      <div class="human-controls">
+        <div>
+          <div id="human-name" class="player-name">You</div>
+          <div id="human-lives" class="lives-display"></div>
+        </div>
+        <button id="knock-btn" class="btn btn-knock" disabled>Knock</button>
+      </div>
+      <div id="human-hand" class="human-hand"></div>
+    </div>
+  </div>
+
+  <!-- SETUP OVERLAY -->
+  <div id="setup-overlay" class="overlay">
+    <div class="overlay-content setup-content">
+      <h2>31</h2>
+      <p>Get the highest hand in a single suit. Last one standing wins!</p>
+
+      <div class="setup-section">
+        <label>Opponents</label>
+        <div class="setup-options">
+          <button class="btn btn-secondary opponent-btn" data-count="1">1</button>
+          <button class="btn btn-secondary opponent-btn" data-count="2">2</button>
+          <button class="btn btn-secondary opponent-btn" data-count="3">3</button>
+        </div>
+      </div>
+
+      <div class="setup-section">
+        <label>Difficulty</label>
+        <div class="setup-options">
+          <button class="btn btn-secondary difficulty-btn" data-difficulty="easy">Easy</button>
+          <button class="btn btn-secondary difficulty-btn" data-difficulty="medium">Medium</button>
+          <button class="btn btn-secondary difficulty-btn" data-difficulty="hard">Hard</button>
+        </div>
+      </div>
+
+      <button id="start-btn" class="btn btn-primary">Start Game</button>
+    </div>
+  </div>
+
+  <!-- ROUND RESULTS OVERLAY -->
+  <div id="round-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <h2 id="round-result-title">Round Results</h2>
+      <ul id="round-results-list" class="results-list"></ul>
+      <div class="overlay-buttons">
+        <button id="next-round-btn" class="btn btn-primary">Next Round</button>
+        <button id="round-new-game-btn" class="btn btn-secondary">New Game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME OVER OVERLAY -->
+  <div id="gameover-overlay" class="overlay hidden">
+    <div class="overlay-content gameover-content">
+      <h2 id="gameover-title">Game Over</h2>
+      <div id="gameover-winner" class="winner-name"></div>
+      <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
